@@ -3,7 +3,7 @@
 PawDopt is an app that showcases and lists dogs available for adoption. You can create, view, remove or update listings of dogs and their information.
 
 Name: Reinardus Navellio  
-Matrikelnummer: 584456
+Matrikelnummer: 584456  
 B112 Front-End Development
 
 # Items to be managed
