@@ -23,7 +23,7 @@ Additional:
 - Assuming the platform is used by a single specific location/center, so location description of a dog does not apply
 
 # Technologies used
-- Back-end: Java with Spring **(option 1)** 
+- Back-end: Java with Spring/Spring Boot **(option 1)** 
 - Front-end: HTML/CSS, JS with React
 - Database: MongoDB
 
