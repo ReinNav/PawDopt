@@ -1,8 +1,0 @@
-version: '1'
-services:
-  playground-web-db:
-    image: mongo:4.2.2
-    environment:
-      MONGO_INITDB_DATABASE: pawdopt-backend
-    ports:
-      - 27017:27017
