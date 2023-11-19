@@ -1,5 +1,5 @@
 document.getElementById("getAllDogsBtn").addEventListener("click", function() {
-    fetch("http://localhost:8080/api/dog")
+    fetch("http://localhost:8080/api/dogs")
     .then(response => response.json())
     .then(data => {
         document.getElementById("apiResponse").value = JSON.stringify(data, null, 2);
@@ -11,7 +11,7 @@ document.getElementById("getAllDogsBtn").addEventListener("click", function() {
 
 document.getElementById("getSpecificDogBtn").addEventListener("click", function() {
     const dogId = document.getElementById("dogId").value;
-    fetch("http://localhost:8080/api/dog/" + dogId)
+    fetch("http://localhost:8080/api/dogs/" + dogId)
     .then(response => response.json())
     .then(data => {
         document.getElementById("apiResponse").value = JSON.stringify(data, null, 2);

@@ -1,0 +1,58 @@
+#root {
+  font-family: 'Roboto', 'sans-serif';
+  margin: 0;
+  padding: 0;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+#main-header {
+  background-color: #060f1656;
+  color: white;
+  border-bottom: solid 1px #ffffff56;
+  padding: 10px 20px 10px 20px;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dog-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dog-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.dog-info {
+  margin-top: 8px;
+}
+
+.like-button {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 5px;
+  margin-top: 8px;
+}
+
+.like-button.liked {
+  color: red;
+}
+
