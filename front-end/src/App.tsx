@@ -1,30 +1,24 @@
-import React from 'react';
-import Header from './components/Header'
-import './App.css';
-import { HealthStatus } from './other/HealthStatus';
+import React, { useState, useEffect } from 'react';
+import Header from './components/Header';
 import DogListing from './components/DogListing';
-
-const dogData = {
-  name: "Snowy",
-  breed: "Pomeranian",
-  age: 9,
-  description: "A lovely and fluffy Pomeranian with a lot of energy.",
-  healthStatus: HealthStatus.Good, 
-  imageUrl: "logo512.png" 
-}
+import { Dog } from './types/Dog';
 
 function App() {
+  const [dogs, setDogs] = useState<Dog[]>([]);
+
+  useEffect(() => {
+    fetch('http://localhost:8080/api/dogs')
+      .then(response => response.json())
+      .then(data => setDogs(data as Dog[]))
+      .catch(error => console.error('Error fetching data: ', error));
+  }, []);
+
   return (
     <div className="App">
       <Header username="Reinardus" />
-      <DogListing 
-        name={dogData.name}
-        breed={dogData.breed}
-        age={dogData.age}
-        description={dogData.description}
-        healthStatus={dogData.healthStatus}
-        imageUrl={dogData.imageUrl}
-        />
+      {dogs.map(dog => (
+        <DogListing key={dog.id} {...dog} />
+      ))}
     </div>
   );
 }
