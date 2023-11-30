@@ -16,9 +16,12 @@ function App() {
   return (
     <div className="App">
       <Header username="Reinardus" />
-      {dogs.map(dog => (
+      <div className="dog-list-container flex-row">
+        {dogs.map(dog => (
         <DogListing key={dog.id} {...dog} />
       ))}
+      </div>
+      
     </div>
   );
 }
