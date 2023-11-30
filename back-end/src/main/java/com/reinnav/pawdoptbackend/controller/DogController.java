@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/dog")
+@RequestMapping("/api/dogs")
 public class DogController {
 
     @Autowired
@@ -43,4 +43,13 @@ public class DogController {
         return dogService.save(dog);
     }
 
+    @PutMapping("/{id}")
+    public Dog update(@RequestBody Dog dog) {
+        return dogService.save(dog);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable String id) {
+        dogService.deleteById(id);
+    }
 }
