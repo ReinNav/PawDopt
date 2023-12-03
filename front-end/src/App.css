@@ -89,6 +89,10 @@ p {
   border-radius: 8px;
 }
 
+.dog-image.no-image {
+  object-fit: contain;
+}
+
 .dog-info {
   position: relative;
   max-height: 100px;

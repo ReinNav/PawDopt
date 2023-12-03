@@ -8,13 +8,17 @@ public class Dog {
     private String id;
 
     private String name;
-    private int age;
+    private String age;
     private String breed;
     private String description;
     private HealthStatus healthStatus;
     private String imageName;
 
-    public Dog(String name, int age, String breed, String description, HealthStatus healthStatus, String imageName) {
+    public Dog(){
+        
+    }
+    
+    public Dog(String name, String age, String breed, String description, HealthStatus healthStatus, String imageName) {
         this.name = name;
         this.age = age;
         this.breed = breed;
@@ -33,7 +37,7 @@ public class Dog {
         return name;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
