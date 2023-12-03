@@ -2,15 +2,18 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import DogListing from './components/DogListing';
 import { Dog } from './types/Dog';
+import { fetchAllDogs } from './API';
 
 function App() {
   const [dogs, setDogs] = useState<Dog[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/dogs')
-      .then(response => response.json())
-      .then(data => setDogs(data as Dog[]))
-      .catch(error => console.error('Error fetching data: ', error));
+    (async () => {
+      const fetchedDogs = await fetchAllDogs();
+      if (fetchedDogs) {
+        setDogs(fetchedDogs);
+      }
+    })();
   }, []);
 
   return (
@@ -18,10 +21,9 @@ function App() {
       <Header username="Reinardus" />
       <div className="dog-list-container flex-row">
         {dogs.map(dog => (
-        <DogListing key={dog.id} {...dog} />
-      ))}
+          <DogListing key={dog.id} {...dog} />
+        ))}
       </div>
-      
     </div>
   );
 }
