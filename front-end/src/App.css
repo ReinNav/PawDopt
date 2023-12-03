@@ -56,6 +56,12 @@ p {
   width: 250px;
 }
 
+h1.list-heading {
+  color:rgb(110, 107, 107);
+  text-align: center;
+  margin-bottom: 0;
+}
+
 .dog-list-container {
   gap: 50px;
   flex-wrap: wrap;
@@ -126,6 +132,25 @@ svg.heart-icon:hover {
 .dog-info h2, .dog-age, .dog-breed, .dog-healthstatus {
   margin: 6px;
 }
+
+.dog-info p {
+  font-size: 16px;
+}
+
+.dog-healthstatus {
+  color: rgb(7, 141, 25);
+  font-weight: 550;
+} 
+
+.dog-healthstatus.need-medical {
+  color: rgb(227, 85, 46);
+  font-weight: 550;
+} 
+
+.dog-healthstatus.special-needs {
+  color: rgb(227, 163, 46);
+  font-weight: 550;
+} 
 
 .desc-label {
   margin-top: 3px;

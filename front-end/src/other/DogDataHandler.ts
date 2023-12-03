@@ -9,6 +9,9 @@ export function handleData( imageName: string | undefined, healthStatus: HealthS
     const imageClassName = imageUrl == `http://localhost:8080/images/${defaultImage}` ? "dog-image no-image" : "dog-image"; 
 
     const healthDescription = getDesc(healthStatus);
+    const healthClassName = healthStatus === HealthStatus.NeedMedical ? "dog-healthstatus need-medical" :
+                            healthStatus === HealthStatus.SpecialNeeds ? "dog-healthstatus special-needs" :
+                            "dog-healthstatus";
 
     const maxWords = 9;
     const wordsArray = description.split(' ');
@@ -18,5 +21,5 @@ export function handleData( imageName: string | undefined, healthStatus: HealthS
     } else {
         desc = description;
     }
-    return { imageUrl, imageClassName, healthDescription, desc };
+    return { imageUrl, imageClassName, healthDescription, healthClassName, desc };
     };

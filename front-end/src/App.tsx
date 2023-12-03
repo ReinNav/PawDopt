@@ -19,6 +19,7 @@ function App() {
   return (
     <div className="App">
       <Header username="Reinardus" />
+      <h1 className="list-heading">Adopt your new best friend!</h1>
       <div className="dog-list-container flex-row">
         {dogs.map(dog => (
           <DogListing key={dog.id} {...dog} />
