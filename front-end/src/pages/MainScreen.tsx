@@ -1,15 +1,14 @@
 // App component
 import React from 'react';
-import Header from './components/Header';
-import DogListing from './components/DogListing';
-import { useDogs } from './domain/hooks';
+import Header from '../components/Header';
+import DogListing from '../components/DogListing';
+import { useDogs } from '../domain/hooks';
 
-function MainPage() {
+function MainScreen() {
   const { dogs, state } = useDogs();
 
   return (
     <div className="Main">
-      <Header />
       <h1 className="list-heading">Adopt your new best friend!</h1>
       <div className="dog-list-container flex-row">
         {state === 'loading' && <p className="state-msg">Loading items…</p>}
@@ -22,4 +21,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default MainScreen;
