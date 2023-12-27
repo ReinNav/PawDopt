@@ -13,7 +13,7 @@ export const fetchAllDogs = async (): Promise<Dog[]> => {
     return data as Dog[];
   } catch (error) {
     console.error('Error fetching dogs: ', error);
-    return [];
+    throw Error;
   }
 };
 

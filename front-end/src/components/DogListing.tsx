@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import '../App.css'; 
-import {getDesc } from '../other/HealthStatus';
+import '../stylesheets/main.css'; 
 import { Dog } from '../types/Dog';
 import HeartIcon from './HeartIcon';
 import { handleData } from '../other/DogDataHandler';
-
-const defaultImage = 'not_available.png';
 
 const DogListing: React.FC<Dog> = (props) => {
   const { id, name, breed, age, description, healthStatus, imageName } = props;

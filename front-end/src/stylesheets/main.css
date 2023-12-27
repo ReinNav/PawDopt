@@ -62,6 +62,12 @@ h1.list-heading {
   margin-bottom: 0;
 }
 
+.state-msg {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 100px
+}
+
 .dog-list-container {
   gap: 50px;
   flex-wrap: wrap;

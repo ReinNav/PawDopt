@@ -1,11 +1,7 @@
 import React from 'react';
-import '../App.css'; 
+import '../stylesheets/main.css'; 
 
-interface HeaderProps {
-  username: string;
-}
-
-const Header: React.FC<HeaderProps> = ({ username }) => {
+const Header: React.FC = () => {
   return (
     <header>
       <div className="flex-row" id="main-header">

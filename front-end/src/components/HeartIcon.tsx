@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../App.css';
+import '../stylesheets/main.css'; 
 
 const HeartIcon: React.FC = () => {
     const [isFilled, setIsFilled] = useState(false);
