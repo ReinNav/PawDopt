@@ -1,6 +1,6 @@
 import { HealthStatus, getDesc } from "./HealthStatus";
 
-export function handleData( imageName: string | undefined, healthStatus: HealthStatus, description: string) {
+export function handleData( imageName: string | undefined, healthStatus: HealthStatus, description: string | undefined) {
     
     
     const defaultImage = "not_available.png";
@@ -14,6 +14,7 @@ export function handleData( imageName: string | undefined, healthStatus: HealthS
                             "dog-healthstatus";
 
     const maxWords = 9;
+    if (!description) description = "";
     const wordsArray = description.split(' ');
     var desc = "";
     if (wordsArray.length > maxWords) {

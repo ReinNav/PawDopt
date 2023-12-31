@@ -1,0 +1,58 @@
+h2, h1 {
+    color: #0b7976;
+}
+
+.detail-screen {
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px;
+}
+
+.detail-img {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.details-row-1-container {
+    top: 0;
+    gap: 50px;
+    height: 50%;
+    width: 100%;
+    justify-content: center;
+}
+
+.description {
+    width: 50%;
+}
+
+.description-label {
+    margin: 0;
+}
+
+.details-row-2-container {
+    column-count: 2;
+    width: 100%;
+}
+
+.more-details {
+    gap: 50px;
+}
+
+.more-details p {
+    margin: 10px 0;
+}
+
+h2.more-details {
+    margin: 0;
+}
+
+
+span.label {
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 5px;
+}
+
