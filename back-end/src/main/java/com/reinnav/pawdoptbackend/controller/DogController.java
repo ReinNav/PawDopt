@@ -1,10 +1,16 @@
 package com.reinnav.pawdoptbackend.controller;
 
 import com.reinnav.pawdoptbackend.model.Dog;
+import com.reinnav.pawdoptbackend.model.HealthStatus;
 import com.reinnav.pawdoptbackend.service.DogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 @RestController
@@ -39,8 +45,28 @@ public class DogController {
      * @return new dog saved
      */
     @PostMapping
-    public Dog create(@RequestBody Dog dog) {
-        return dogService.save(dog);
+    public Dog create(@RequestParam("name") String name,
+                      @RequestParam("age") String age,
+                      @RequestParam("breed") String breed,
+                      @RequestParam("description") String description,
+                      @RequestParam("healthStatus") String healthStatus,
+                      @RequestParam("image") MultipartFile image) throws IOException {
+        Dog dog = new Dog(name, age, breed, description, HealthStatus.valueOf(healthStatus));
+
+        Dog savedDog = dogService.save(dog);
+
+        if (!image.isEmpty()) {
+            String relativePath = "./images/";  // Relative path from the project root
+            String imageName = savedDog.getId() + "_" + image.getOriginalFilename();
+            Path path = Paths.get(relativePath + imageName).toAbsolutePath();
+            Files.createDirectories(path.getParent()); // Ensure the directory exists
+            Files.write(path, image.getBytes());
+            
+            savedDog.setImage(imageName);
+            dogService.save(savedDog);
+        }
+
+        return savedDog;
     }
 
     @PutMapping("/{id}")

@@ -25,10 +25,19 @@ export const fetchAllDogs = async (): Promise<Dog[]> => {
 export const fetchDogById = async (id: string): Promise<Dog | undefined> => {
   try {
     const response = await fetch(`${baseUrl}/${id}`);
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error(`Dog with ID ${id} not found`);
+      } else {
+        throw new Error('An error occurred while fetching the data');
+      }
+    }
+
     const data = await response.json();
     return data as Dog;
   } catch (error) {
-    console.error('Error fetching dog by id: ', error);
+    throw error;
   }
 };
 
@@ -37,14 +46,23 @@ export const fetchDogById = async (id: string): Promise<Dog | undefined> => {
  * @param dog Dog type object 
  * @returns Promise of the Dog instance stored
  */
-export const createDog = async (dog: Dog): Promise<Dog | undefined> => {
+export const createDog = async (dog: Dog, file: File| null): Promise<Dog | undefined> => {
   try {
+    const formData = new FormData();
+
+    Object.keys(dog).forEach(key => {
+      if (key !== 'id') { // Assuming you don't want to send 'id' for a new entry
+        formData.append(key, (dog as any)[key]);
+      }
+    });
+  
+    if (file) {
+      formData.append('image', file);
+    }
+
     const response = await fetch(baseUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(dog),
+      body:formData,
     });
     const data = await response.json();
     return data as Dog;

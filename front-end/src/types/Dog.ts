@@ -7,5 +7,5 @@ export interface Dog {
   breed: string;
   description: string;
   healthStatus: HealthStatus;
-  imageName?: string;
+  image?: String;
 }

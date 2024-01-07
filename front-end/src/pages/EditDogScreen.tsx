@@ -4,7 +4,9 @@ import { useDog } from '../domain/hooks';
 import { Dog } from '../types/Dog';
 import { HealthStatus, getDesc } from '../other/HealthStatus';
 import { updateDog } from '../API';
-import '../stylesheets/detailScreen.css';
+import '../stylesheets/formStyles.css';
+import '../stylesheets/main.css';
+import '../stylesheets/editScreen.css';
 
 const EditDogScreen: React.FC = () => {
   const { dogId } = useParams<{ dogId: string }>();
@@ -19,7 +21,7 @@ const EditDogScreen: React.FC = () => {
     breed: '',
     description: '',
     healthStatus: HealthStatus.Good,
-    imageName: ''
+    image: undefined
   });
 
   const healthStatusOptions = Object.values(HealthStatus).map(status => ({
@@ -39,6 +41,10 @@ const EditDogScreen: React.FC = () => {
     setFormData(prevFormData => ({ ...prevFormData, [name]: value }));
   };
 
+  const handleCancel = () => {
+    navigate(`/dogs/${formData.id}/detail`);
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
@@ -55,16 +61,15 @@ const EditDogScreen: React.FC = () => {
     }
   };
 
-  if (state === 'loading') return <div>Loading...</div>;
-  if (state === 'error') return <div>Error: {error?.message}</div>;
-  if (!dog) return <div>No dog found</div>;
+  if (state === 'loading') return <p className="state-msg">Loading items…</p>;
+  if (state === 'error') return <p className="state-msg">Error in fetching dog information.<br></br>Please try reloading the page or try again later.</p>;
 
   return (
     <div className="edit-screen">
-      <h1>Edit Dog</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label>
+      <h1>Edit {formData.name}'s information</h1>
+      <form onSubmit={handleSubmit} className='edit-form'>
+        <div className='flex-column'>
+          <label>Name</label>
           <input
             type="text"
             name="name"
@@ -72,8 +77,8 @@ const EditDogScreen: React.FC = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label>Age:</label>
+        <div className='flex-column'>
+          <label>Age</label>
           <input
             type="text"
             name="age"
@@ -81,8 +86,8 @@ const EditDogScreen: React.FC = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label>Breed:</label>
+        <div className='flex-column'>
+          <label>Breed</label>
           <input
             type="text"
             name="breed"
@@ -90,16 +95,18 @@ const EditDogScreen: React.FC = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label>Description:</label>
+        <div className='flex-column'>
+          <label>Description</label>
           <textarea
             name="description"
+            rows={5}
+            cols={50}
             value={formData.description}
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label>Health Status:</label>
+        <div className='flex-column'>
+          <label>Health Status</label>
           <select
             name="healthStatus"
             value={formData.healthStatus}
@@ -112,7 +119,11 @@ const EditDogScreen: React.FC = () => {
             ))}
           </select>
         </div>
-        <button type="submit">Save Changes</button>
+        <div className='flex-row btn-container'>
+          <button className='cancel-btn' onClick={handleCancel}>Cancel</button>
+          <button type="submit" className='btn submit-btn'>Save Changes</button>
+        </div>
+        
       </form>
     </div>
   );

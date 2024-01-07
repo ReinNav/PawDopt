@@ -1,0 +1,10 @@
+.sad-puppy {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.sad-puppy-container {
+    display: flex;
+    text-align: center;
+    padding-top: 50px;
+}

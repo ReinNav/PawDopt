@@ -1,0 +1,49 @@
+.submit-btn {
+    width: 120px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+form {
+    width: 400px;
+    margin: 0 auto;
+}
+
+form label {
+    text-align: left;
+    color: #05b7b1;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+form input, form textarea, form select {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 5px;
+    border: 1px solid #05b7b1; 
+    color: #04716e;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+button.cancel-btn {
+    border: none;
+    background-color: transparent;
+    color: rgb(199, 12, 12);
+}
+
+button.cancel-btn:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+form button {
+    font-size: 16px;
+}
+
+.btn-container {
+    width: 100%;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+}

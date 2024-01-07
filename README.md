@@ -28,3 +28,11 @@ Additional:
 - Database: MongoDB
 
 
+# How to run the app
+1. cd back-end 
+2. run the backend `gradle bootRun`
+3. run the database (You need to have docker running)`docker-compose -f docker-compose-dev.yml up`
+4. cd front-end
+5. Start the frontend `npm install && npm start`
+
+

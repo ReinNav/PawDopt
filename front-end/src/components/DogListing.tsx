@@ -8,9 +8,9 @@ import { useNavigate } from 'react-router-dom';
 
 
 const DogListing: React.FC<Dog> = (props) => {
-  const { id, name, breed, age, description, healthStatus, imageName } = props;
+  const { id, name, breed, age, description, healthStatus, image } = props;
   
-  const { imageUrl, imageClassName, healthDescription, healthClassName, desc } = handleData(imageName, healthStatus, description);
+  const { imageUrl, imageClassName, healthDescription, healthClassName, desc } = handleData(id, image, healthStatus, description);
   
   const navigate = useNavigate()
 
