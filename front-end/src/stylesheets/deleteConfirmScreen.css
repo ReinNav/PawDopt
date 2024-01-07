@@ -1,0 +1,42 @@
+.delete-confirm-container {
+    max-width: 400px;
+    text-align: center;
+    border: 1px solid #05b7b1;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 150px auto;
+}
+
+.delete-confirm-container p {
+    margin-top: 0;
+    font-size: 20px;
+}
+button.cancel-btn {
+    border: none;
+    background-color: transparent;
+    color: rgb(199, 12, 12);
+}
+
+button.cancel-btn:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.confirm-delete-btn {
+    width: 130px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.button-container button {
+    font-size: 16px;
+}
+
+.button-container {
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+

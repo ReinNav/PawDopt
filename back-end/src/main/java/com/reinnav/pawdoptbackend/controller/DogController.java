@@ -50,7 +50,7 @@ public class DogController {
                       @RequestParam("breed") String breed,
                       @RequestParam("description") String description,
                       @RequestParam("healthStatus") String healthStatus,
-                      @RequestParam("image") MultipartFile image) throws IOException {
+                      @RequestParam(value = "image", required = false) MultipartFile image) throws IOException {
         Dog dog = new Dog(name, age, breed, description, HealthStatus.valueOf(healthStatus));
 
         Dog savedDog = dogService.save(dog);

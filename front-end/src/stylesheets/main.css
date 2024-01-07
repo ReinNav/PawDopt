@@ -38,6 +38,10 @@ p {
   flex-direction: column;
 }
 
+.main-screen {
+  min-height: 300px;
+}
+
 #main-header {
   color: white;
   border-bottom: solid 1px #d4d4d456;
@@ -69,6 +73,7 @@ h1.list-heading {
 }
 
 .state-msg {
+  margin-bottom: 1000px;
   text-align: center;
   font-size: 26px;
   margin-top: 100px
@@ -224,5 +229,11 @@ p.property-label {
 
 p.property-value {
   margin: 0;
+}
+
+.no-dogs-message {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 100px;
 }
 

@@ -96,9 +96,10 @@ const EditDogScreen: React.FC = () => {
   if (state === 'loading') return <p className="state-msg">Loading items…</p>;
   if (state === 'error') return <p className="state-msg">Error in fetching dog information.<br></br>Please try reloading the page or try again later.</p>;
 
-  return (
+  if (state === 'success' && dog) {
+    return (
     <div className="edit-screen">
-      <h1>Edit {formData.name}'s information</h1>
+      <h1>Edit {dog.name}'s information</h1>
       <form onSubmit={handleSubmit} className='edit-form'>
         <div className='flex-column img-preview-container'>
           <img src={previewImage} alt="Dog" className='img-preview' />
@@ -119,6 +120,7 @@ const EditDogScreen: React.FC = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
+            required
           />
         </div>
         <div className='flex-column'>
@@ -128,6 +130,7 @@ const EditDogScreen: React.FC = () => {
             name="age"
             value={formData.age}
             onChange={handleChange}
+            required
           />
         </div>
         <div className='flex-column'>
@@ -137,16 +140,18 @@ const EditDogScreen: React.FC = () => {
             name="breed"
             value={formData.breed}
             onChange={handleChange}
+            required
           />
         </div>
         <div className='flex-column'>
           <label>Description</label>
           <textarea
             name="description"
-            rows={5}
+            rows={8}
             cols={50}
             value={formData.description}
             onChange={handleChange}
+            required
           />
         </div>
         <div className='flex-column'>
@@ -171,6 +176,12 @@ const EditDogScreen: React.FC = () => {
       </form>
     </div>
   );
+
+  
+}
+  if (state === 'success' && !dog) return <p className="state-msg">Error in fetching dog details.<br></br>Please try reloading the page or try again later.</p>;
+  return <p className="state-msg">Error in fetching dog details.<br></br>Please try reloading the page or try again later.</p>;
+
 };
 
 export default EditDogScreen;

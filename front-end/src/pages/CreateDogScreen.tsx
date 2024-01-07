@@ -41,7 +41,8 @@ const CreateDogScreen: React.FC = () => {
       const fileUrl = URL.createObjectURL(file); // temporary url so dont need to persist before submitting
       setPreviewImage(fileUrl);
     } else {
-      setPreviewImage(undefined);
+      alert("Error occured trying to upload image. Please try again.")
+      setPreviewImage('/not_available.png');
     }
   };
   
@@ -63,6 +64,10 @@ const CreateDogScreen: React.FC = () => {
     e.preventDefault();
     
     try {
+      if (previewImage === '/not_available.png') {
+        setFile(null)
+      }
+
       const newDog = await createDog(formData, file);
       if (newDog) {
         console.log('Dog added:', newDog);
@@ -93,19 +98,42 @@ const CreateDogScreen: React.FC = () => {
         </div>
         <div className='flex-column'>
           <label>Name:</label>
-          <input type="text" name="name" value={formData.name} onChange={handleChange} />
+          <input 
+            type="text" 
+            name="name" 
+            value={formData.name} 
+            onChange={handleChange} 
+            required
+          />
         </div>
         <div className='flex-column'>
           <label>Age:</label>
-          <input type="text" name="age" value={formData.age} onChange={handleChange} />
+          <input 
+            type="text" 
+            name="age" 
+            value={formData.age} 
+            onChange={handleChange} 
+            required
+          />
         </div>
         <div className='flex-column'>
           <label>Breed:</label>
-          <input type="text" name="breed" value={formData.breed} onChange={handleChange} />
+          <input 
+            type="text" 
+            name="breed" 
+            value={formData.breed} 
+            onChange={handleChange} 
+            required/>
         </div>
         <div className='flex-column'>
           <label>Description:</label>
-          <textarea name="description" value={formData.description} onChange={handleChange} />
+          <textarea 
+            name="description" 
+            value={formData.description} 
+            onChange={handleChange} 
+            rows={8} 
+            cols={50} 
+            required/>
         </div>
           <div className='flex-column'>
           <label>Health Status</label>

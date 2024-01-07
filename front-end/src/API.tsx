@@ -51,7 +51,7 @@ export const createDog = async (dog: Dog, file: File| null): Promise<Dog | undef
     const formData = new FormData();
 
     Object.keys(dog).forEach(key => {
-      if (key !== 'id') { // Assuming you don't want to send 'id' for a new entry
+      if (key !== 'id') { 
         formData.append(key, (dog as any)[key]);
       }
     });
@@ -62,7 +62,7 @@ export const createDog = async (dog: Dog, file: File| null): Promise<Dog | undef
 
     const response = await fetch(baseUrl, {
       method: 'POST',
-      body:formData,
+      body: formData,
     });
     const data = await response.json();
     return data as Dog;

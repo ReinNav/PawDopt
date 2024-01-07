@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useDog } from '../domain/hooks';
 import { handleData } from '../other/DogDataHandler';
 import '../stylesheets/detailScreen.css'; 
+import '../stylesheets/main.css'; 
 import SadPuppy from '../components/SadPuppy';
 
 const DogDetailScreen = () => {
@@ -39,7 +40,7 @@ const DogDetailScreen = () => {
 
     return (
       <div className="flex-column detail-screen">
-        <h1>Dog Details</h1>
+        <h1>{dog.name}'s Details</h1>
         <div className="flex-row detail-screen-inner-container">
           <img src={imageUrl} alt={name} className="detail-img" />
           <div className="description">

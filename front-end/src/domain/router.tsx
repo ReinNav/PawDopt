@@ -6,6 +6,7 @@ import EditDogScreen from "../pages/EditDogScreen";
 import CreateDogScreen from "../pages/CreateDogScreen";
 import Imprint from "../components/Imprint";
 import About from "../components/About";
+import DeleteConfirmScreen from "../pages/DeleteConfirmScreen";
 
 export const router = createBrowserRouter([ 
 	{ 
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
 			{
 				path: "dogs/add",
 				element: <CreateDogScreen />,
+			},
+			{
+				path: "dogs/:dogId/delete",
+				element: <DeleteConfirmScreen />,
 			},
             {
 				path: "/imprint",
