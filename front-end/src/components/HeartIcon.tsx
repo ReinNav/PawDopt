@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, MouseEvent } from 'react';
 import '../stylesheets/main.css'; 
 
 const HeartIcon: React.FC = () => {
     const [isFilled, setIsFilled] = useState(false);
     const [likeNumber, setLikeNumber] = useState(0);
 
-    const handleClick = () => {
+    const handleClick = (e: MouseEvent<SVGSVGElement>) => {
+        e.stopPropagation();
         setIsFilled(!isFilled);
         setLikeNumber(!isFilled ? 1 : 0);
     };

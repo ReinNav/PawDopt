@@ -2,6 +2,8 @@ import { createBrowserRouter, redirect } from "react-router-dom";
 import MainScreen from "../pages/MainScreen";
 import App from "../App"
 import DogDetailScreen from "../pages/DogDetailScreen";
+import EditDogScreen from "../pages/EditDogScreen";
+import CreateDogScreen from "../pages/CreateDogScreen";
 
 export const router = createBrowserRouter([ 
 	{ 
@@ -17,17 +19,17 @@ export const router = createBrowserRouter([
 				element: <MainScreen />, 
 			},
 			{
-				path: "/dogs/:dogId",
+				path: "/dogs/:dogId/detail",
 				element: <DogDetailScreen />,
 			},
-			// {
-			// 	path: "dogs/:id/edit",
-			// 	element: <EditDogScreen />,
-			// },
-			// {
-			// 	path: "add",
-			// 	element: <AddDogScreen />,
-			// },
+			{
+				path: "dogs/:dogId/edit",
+				element: <EditDogScreen />,
+			},
+			{
+				path: "dogs/add",
+				element: <CreateDogScreen />,
+			},
             // {
 			// 	path: "about",
 			// 	element: <AboutScreen />,

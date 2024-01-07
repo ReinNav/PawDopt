@@ -16,7 +16,7 @@ h2, h1 {
     border-radius: 20px;
 }
 
-.details-row-1-container {
+.detail-screen-inner-container {
     top: 0;
     gap: 50px;
     height: 50%;
@@ -30,11 +30,6 @@ h2, h1 {
 
 .description-label {
     margin: 0;
-}
-
-.details-row-2-container {
-    column-count: 2;
-    width: 100%;
 }
 
 .more-details {
@@ -54,5 +49,37 @@ span.label {
     font-size: 16px;
     font-weight: 600;
     margin-right: 5px;
+}
+
+.edit-delete-btn-container {
+    margin-left: auto;
+    gap: 30px;
+}
+
+.edit-delete-btn-container button {
+    width: 120px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.edit-delete-btn-container button:hover {
+    cursor: pointer;
+    opacity: 80%;
+}
+
+.delete-btn {
+    background-color: rgba(255, 0, 0, 0.82);
+    color: white;
+    border: 1px solid white;
+    border-radius: 8px;
+}
+
+.edit-btn {
+    background-color: #05b7b1;
+    color: white;
+    border: 1px solid white;
+    border-radius: 8px;
 }
 

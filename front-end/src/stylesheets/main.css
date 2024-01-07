@@ -54,6 +54,12 @@ p {
 
 .site-logo {
   width: 250px;
+  transition: all 0.2s ease;
+}
+
+.site-logo:hover {
+  cursor: pointer;
+  transform: scale(1.03)
 }
 
 h1.list-heading {
@@ -74,6 +80,23 @@ h1.list-heading {
   padding: 20px;
   justify-content: center;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.add-btn-container {
+  padding: 20px;
+  max-width: 1200px;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 auto;
+}
+
+.add-btn {
+  width: 120px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 16px;
 }
 
 .dog-card {
@@ -87,6 +110,7 @@ h1.list-heading {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   transition: all 0.2s ease;
+  z-index: 1;
 }
 
 .dog-card:hover {
@@ -124,6 +148,10 @@ h1.list-heading {
   display: inline-flex;
   align-items: center;
   gap: 7px;
+}
+
+#like-container {
+  z-index: 2;
 }
 
 svg.heart-icon {

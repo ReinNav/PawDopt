@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useDog } from '../domain/hooks';
 import { handleData } from '../other/DogDataHandler';
 import '../stylesheets/detailScreen.css'; 
@@ -9,6 +9,17 @@ const DogDetailScreen = () => {
   const { dogId } = useParams();
   const { dog, state, error } = useDog(dogId);
 
+  const navigate = useNavigate()
+
+  const handleEditClick = () => {
+    navigate(`/dogs/${id}/edit`);
+  };
+
+  const handleDeleteClick = () => {
+    navigate(`/dogs/${id}/delete`);
+  };
+
+
   if (state === 'loading') return <div>Loading...</div>;
   if (state === 'error') return <div>Error: {error?.message}</div>;
 
@@ -17,10 +28,12 @@ const DogDetailScreen = () => {
   const { id, name, breed, age, description, healthStatus, imageName } = dog;
   
   const { imageUrl, healthDescription } = handleData(imageName, healthStatus, description);
+
+
   return (
         <div className="flex-column detail-screen">
             <h1>Dog Details</h1>
-            <div className="flex-row details-row-1-container">
+            <div className="flex-row detail-screen-inner-container">
                 <img src={imageUrl} alt={name} className="detail-img" />
                 <div className="description">
                     <h2 className="description-label">Description</h2>
@@ -39,9 +52,15 @@ const DogDetailScreen = () => {
                         </div>
                         
                     </div>
+
+                    
                 </div>
+                
             </div>
-            
+            <div className='flex-row edit-delete-btn-container'>
+                        <button className='delete-btn' onClick={handleDeleteClick}>Delete</button>
+                        <button className='edit-btn' onClick={handleEditClick}>Edit</button>
+            </div>
         </div>
     );
 };

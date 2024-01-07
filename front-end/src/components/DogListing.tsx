@@ -15,7 +15,7 @@ const DogListing: React.FC<Dog> = (props) => {
   const navigate = useNavigate()
 
   const handleCardClick = () => {
-    navigate(`/dogs/${id}`);
+    navigate(`/dogs/${id}/detail`);
   };
 
     return (
