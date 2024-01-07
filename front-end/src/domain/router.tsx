@@ -4,6 +4,8 @@ import App from "../App"
 import DogDetailScreen from "../pages/DogDetailScreen";
 import EditDogScreen from "../pages/EditDogScreen";
 import CreateDogScreen from "../pages/CreateDogScreen";
+import Imprint from "../components/Imprint";
+import About from "../components/About";
 
 export const router = createBrowserRouter([ 
 	{ 
@@ -30,10 +32,14 @@ export const router = createBrowserRouter([
 				path: "dogs/add",
 				element: <CreateDogScreen />,
 			},
-            // {
-			// 	path: "about",
-			// 	element: <AboutScreen />,
-			// },
+            {
+				path: "/imprint",
+				element: <Imprint />,
+			},
+			{
+				path: "/about",
+				element: <About />,
+			},
 		],
 	}
 ]);
