@@ -36,6 +36,4 @@ out/
 ### VS Code ###
 .vscode/
 
-docker-compose-dev.yml
-
 !**/src/main/resources/images/
