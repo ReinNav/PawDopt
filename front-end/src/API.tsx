@@ -77,15 +77,29 @@ export const createDog = async (dog: Dog, file: File| null): Promise<Dog | undef
  * @param dog Dog type object
  * @returns Promise of dog instance updated
  */
-export const updateDog = async (dog: Dog): Promise<Dog | undefined> => {
+export const updateDog = async (dog: Dog, file: File | null): Promise<Dog | undefined> => {
   try {
+    const formData = new FormData();
+
+     Object.entries(dog).forEach(([key, value]) => {
+      if (key !== 'id' && value !== undefined) {
+        formData.append(key, value);
+      }
+    });
+
+    if (file) {
+      formData.append('image', file);
+    }
+
     const response = await fetch(`${baseUrl}/${dog.id}`, {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(dog),
+      body: formData,
     });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
     const data = await response.json();
     return data as Dog;
   } catch (error) {

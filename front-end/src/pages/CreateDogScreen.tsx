@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Dog } from '../types/Dog';
 import { HealthStatus, getDesc } from '../other/HealthStatus';
@@ -29,13 +29,33 @@ const CreateDogScreen: React.FC = () => {
     setFormData(prevFormData => ({ ...prevFormData, [name]: value }));
   };
 
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState<File | null>(null); 
 
+  const [previewImage, setPreviewImage] = useState<string | undefined>(undefined);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files ? e.target.files[0] : null;
-    if (selectedFile) {
-      setFile(selectedFile);
+    const file = e.target.files ? e.target.files[0] : null;
+    if (file) {
+      setFile(file);
+      const fileUrl = URL.createObjectURL(file); // temporary url so dont need to persist before submitting
+      setPreviewImage(fileUrl);
+    } else {
+      setPreviewImage(undefined);
     }
+  };
+  
+  // preview image for the form
+  useEffect(() => {
+    if (formData.image) {
+      setPreviewImage(`http://localhost:8080/images/${formData.image}`);
+    } else {
+      setPreviewImage('/not_available.png');
+    }
+  }, [formData.image]);
+
+  const handleFileButtonClick = () => {
+    fileInputRef.current?.click();
   };
   
 
@@ -59,6 +79,18 @@ const CreateDogScreen: React.FC = () => {
     <div className="create-dog-screen">
       <h1>Add New Dog</h1>
       <form onSubmit={handleSubmit}>
+        <div className='flex-column img-preview-container'>
+          <img src={previewImage} alt="Dog" className='img-preview' />
+          <input 
+            type="file" 
+            name="image" 
+            id="selectedFile" 
+            onChange={handleImageChange} 
+            ref={fileInputRef}
+            style={{ display: 'none' }} // Hide the file input
+          />
+          <button type="button" className='change-img-btn' onClick={handleFileButtonClick}>Change Image</button>
+        </div>
         <div className='flex-column'>
           <label>Name:</label>
           <input type="text" name="name" value={formData.name} onChange={handleChange} />
@@ -88,10 +120,6 @@ const CreateDogScreen: React.FC = () => {
               </option>
             ))}
           </select>
-        </div>
-        <div>
-          <label>Image:</label>
-          <input type="file" name="image" onChange={handleImageChange} />
         </div>
         <div className='flex-row btn-container'>
           <button className='cancel-btn'>cancel</button>

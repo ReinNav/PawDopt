@@ -47,3 +47,34 @@ form button {
     gap: 40px;
     margin-top: 20px;
 }
+
+.img-preview {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 200px;
+    margin-bottom: 10px;
+}
+
+.img-preview-container {
+    justify-content: center;
+    align-items: center;
+}
+
+.change-img-btn {
+    font-size: 12px;
+    border: 1px solid #05b7b1;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #015a57;
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+.change-img-btn:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #05b7b1;
+
+}

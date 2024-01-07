@@ -56,10 +56,10 @@ public class DogController {
         Dog savedDog = dogService.save(dog);
 
         if (!image.isEmpty()) {
-            String relativePath = "./images/";  // Relative path from the project root
+            String relativePath = "./images/"; 
             String imageName = savedDog.getId() + "_" + image.getOriginalFilename();
             Path path = Paths.get(relativePath + imageName).toAbsolutePath();
-            Files.createDirectories(path.getParent()); // Ensure the directory exists
+            Files.createDirectories(path.getParent()); // create if not exist
             Files.write(path, image.getBytes());
             
             savedDog.setImage(imageName);
@@ -69,9 +69,36 @@ public class DogController {
         return savedDog;
     }
 
+    /**
+     * updates a dog instance to DB
+     * @param dog new dog
+     * @return new dog saved
+     */
     @PutMapping("/{id}")
-    public Dog update(@RequestBody Dog dog) {
-        return dogService.save(dog);
+    public Dog update(@PathVariable String id,
+                  @RequestParam("name") String name,
+                  @RequestParam("age") String age,
+                  @RequestParam("breed") String breed,
+                  @RequestParam("description") String description,
+                  @RequestParam("healthStatus") String healthStatus,
+                  @RequestParam(value = "image", required = false) MultipartFile image) throws IOException {
+    Dog dog = dogService.findById(id);
+    dog.setName(name);
+    dog.setAge(age);
+    dog.setBreed(breed);
+    dog.setDescription(description);
+    dog.setHealthStatus(HealthStatus.valueOf(healthStatus));
+
+    if (image != null && !image.isEmpty()) {
+        String relativePath = "./images/";
+        String imageName = id + "_" + image.getOriginalFilename();
+        Path path = Paths.get(relativePath + imageName).toAbsolutePath();
+        Files.createDirectories(path.getParent());
+        Files.write(path, image.getBytes());
+        dog.setImage(imageName); 
+    }
+
+    return dogService.save(dog);
     }
 
     @DeleteMapping("/{id}")
