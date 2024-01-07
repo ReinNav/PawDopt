@@ -58,6 +58,11 @@ const CreateDogScreen: React.FC = () => {
   const handleFileButtonClick = () => {
     fileInputRef.current?.click();
   };
+
+
+  const handleCancel = () => {
+    navigate('/main')
+  };
   
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -150,7 +155,7 @@ const CreateDogScreen: React.FC = () => {
           </select>
         </div>
         <div className='flex-row btn-container'>
-          <button className='cancel-btn'>cancel</button>
+          <button className='cancel-btn' onClick={handleCancel}>cancel</button>
           <button type="submit" className='btn submit-btn'>Add Dog</button>
         </div>
         
