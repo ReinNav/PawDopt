@@ -7,6 +7,7 @@ import CreateDogScreen from "../pages/CreateDogScreen";
 import Imprint from "../components/Imprint";
 import About from "../components/About";
 import DeleteConfirmScreen from "../pages/DeleteConfirmScreen";
+import LoginScreen from "../pages/LoginScreen";
 
 export const router = createBrowserRouter([ 
 	{ 
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
 			{
 				path: "/about",
 				element: <About />,
+			},
+			{
+				path: "/login",
+				element: <LoginScreen />,
 			},
 		],
 	}
