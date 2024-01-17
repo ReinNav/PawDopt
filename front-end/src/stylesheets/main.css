@@ -6,6 +6,15 @@
   padding: 0;
 }
 
+.error-screen {
+  text-align: center;
+}
+
+.error-screen p {
+  margin-top: 0;
+  font-size: 20px;
+}
+
 .btn {
   background-color: #05b7b1;
   color: white;

@@ -24,6 +24,6 @@ public class AuthService {
 
     public boolean authenticate(String username, String password) {
         User user = userRepository.findByUsername(username);
-        return user != null;
+        return user != null && (user.getPassword().equals(password));
     }
 }

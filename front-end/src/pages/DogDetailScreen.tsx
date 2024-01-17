@@ -1,5 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
 import { useDog } from '../domain/hooks';
 import { handleData } from '../other/DogDataHandler';
 import '../stylesheets/detailScreen.css'; 
@@ -9,8 +11,9 @@ import SadPuppy from '../components/SadPuppy';
 const DogDetailScreen = () => {
   const { dogId } = useParams();
   const { dog, state, error } = useDog(dogId);
-
   const navigate = useNavigate();
+
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
 
   const handleEditClick = () => {
     if (dog) {
@@ -59,10 +62,12 @@ const DogDetailScreen = () => {
             </div>
           </div>
         </div>
-        <div className='flex-row edit-delete-btn-container'>
-          <button className='delete-btn' onClick={handleDeleteClick}>Delete</button>
-          <button className='edit-btn' onClick={handleEditClick}>Edit</button>
-        </div>
+        {isLoggedIn && (
+          <div className='flex-row edit-delete-btn-container'>
+            <button className='delete-btn' onClick={handleDeleteClick}>Delete</button>
+            <button className='edit-btn' onClick={handleEditClick}>Edit</button>
+          </div>
+        )}
       </div>
     );
   }

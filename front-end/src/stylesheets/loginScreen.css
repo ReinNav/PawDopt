@@ -1,0 +1,44 @@
+.login-screen {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.login-screen h1 {
+    text-align: center;
+}
+
+form {
+    max-width: 300px
+}
+
+form input {
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+}
+
+.login-btn {
+    background-color: #05b7b1;
+    border: 1px solid white;
+    color: white;
+    border-radius: 5px;
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: all 0.1s ease;
+}
+
+.login-btn:hover, .cancel-login-btn:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.cancel-login-btn {
+    background-color: white;
+    color: #05b7b1;
+    border: 1px solid #05b7b1;
+    border-radius: 5px;
+    padding: 8px;
+    transition: all 0.1s ease;
+}

@@ -8,6 +8,9 @@ import Imprint from "../components/Imprint";
 import About from "../components/About";
 import DeleteConfirmScreen from "../pages/DeleteConfirmScreen";
 import LoginScreen from "../pages/LoginScreen";
+import LogoutConfirmScreen from "../pages/LogoutConfirmScreen";
+import ProtectedRoute from "./ProtectedRoute";
+import ErrorScreen from "../pages/ErrorScreen";
 
 export const router = createBrowserRouter([ 
 	{ 
@@ -28,15 +31,15 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: "dogs/:dogId/edit",
-				element: <EditDogScreen />,
+				element: <ProtectedRoute component={EditDogScreen} />,
 			},
 			{
 				path: "dogs/add",
-				element: <CreateDogScreen />,
+				element: <ProtectedRoute component={CreateDogScreen} />,
 			},
 			{
 				path: "dogs/:dogId/delete",
-				element: <DeleteConfirmScreen />,
+				element: <ProtectedRoute component={DeleteConfirmScreen} />,
 			},
             {
 				path: "/imprint",
@@ -50,6 +53,16 @@ export const router = createBrowserRouter([
 				path: "/login",
 				element: <LoginScreen />,
 			},
+			{
+				path: "/logoutconfirm",
+				element: <LogoutConfirmScreen />,
+			},
+			{
+				path: "*",
+				element: <ErrorScreen />,
+			},
+			
+			
 		],
 	}
 ]);

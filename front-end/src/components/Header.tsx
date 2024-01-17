@@ -19,7 +19,7 @@ const Header: React.FC = () => {
   };
 
   const handleLogoutClick = () => {
-    dispatch(logout());
+    navigate('/logoutconfirm');
   };
 
   return (

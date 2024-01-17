@@ -1,11 +1,14 @@
 import React, { useState, FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../redux/authReducer';
+import { useNavigate } from 'react-router-dom';
+import '../stylesheets/loginScreen.css';
 
 const LoginComponent: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogin = async (event: FormEvent) => {
     event.preventDefault(); 
@@ -18,27 +21,45 @@ const LoginComponent: React.FC = () => {
     
     if (response.ok) {
       dispatch(loginSuccess());
+      navigate("/main")
     } else {
-      console.log("Login failed");
+      alert('Login failed! Please try again.')
     }
   };
 
+  const handleCancel = () => {
+    navigate(`/main`); 
+  }
+
   return (
-    <div>
+    <div className='login-screen'>
+      <h1>Login</h1>  
       <form onSubmit={handleLogin}>
+        <div className='flex-column'>
+        <label>Username</label>
         <input 
           type="text"
           value={username} 
           onChange={e => setUsername(e.target.value)} 
           placeholder="Username" 
+          required
         />
-        <input 
-          type="password" 
-          value={password} 
-          onChange={e => setPassword(e.target.value)} 
-          placeholder="Password" 
-        />
-        <button type="submit">Login</button>
+        </div>
+        <div className='flex-column'>
+            <label>Password</label>
+            <input 
+            type="password" 
+            value={password} 
+            onChange={e => setPassword(e.target.value)} 
+            placeholder="Password" 
+            required
+            />
+         </div>
+         <div className='flex-column'>
+            <button className='login-btn' type="submit">Login</button>
+            <button className='cancel-login-btn' onClick={handleCancel}>Cancel</button>
+         </div>
+        
       </form>
     </div>
   );
