@@ -1,6 +1,6 @@
 import React, { ComponentType } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../redux/store';
+import { loginStatus } from '../redux/store';
 import ErrorScreen from '../pages/ErrorScreen';
 
 interface ProtectedRouteProps {
@@ -8,7 +8,7 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ component: Component }) => {
-  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
+  const isLoggedIn = useSelector(loginStatus);
 
   if (!isLoggedIn) {
     return <ErrorScreen />;

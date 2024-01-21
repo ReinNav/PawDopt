@@ -7,6 +7,7 @@ import '../stylesheets/loginScreen.css';
 const LoginComponent: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [authValid, setAuthValid] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -20,10 +21,11 @@ const LoginComponent: React.FC = () => {
     });
     
     if (response.ok) {
+      setAuthValid(true);
       dispatch(loginSuccess());
       navigate("/main")
     } else {
-      alert('Login failed! Please try again.')
+      setAuthValid(false);
     }
   };
 
@@ -54,6 +56,7 @@ const LoginComponent: React.FC = () => {
             placeholder="Password" 
             required
             />
+            {!authValid && <p className="error-message">Invalid username or password.</p>}
          </div>
          <div className='flex-column'>
             <button className='login-btn' type="submit">Login</button>

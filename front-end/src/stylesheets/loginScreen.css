@@ -42,3 +42,9 @@ form input {
     padding: 8px;
     transition: all 0.1s ease;
 }
+
+.error-message {
+    color: red;
+    margin: 0;
+    font-size: 14px;
+}

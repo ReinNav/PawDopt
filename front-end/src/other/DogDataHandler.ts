@@ -1,10 +1,6 @@
 import { HealthStatus, getDesc } from "./HealthStatus";
 
 export function handleData( id: string, image: String | undefined, healthStatus: HealthStatus, description: string | undefined) {
-    if (image) {
-        console.log(image);
-    }
-    
     
     const defaultImage = "not_available.png";
 

@@ -1,14 +1,12 @@
 import React from 'react';
 import '../stylesheets/main.css'; 
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../redux/store';
-import { logout } from '../redux/authReducer';
+import { useSelector } from 'react-redux';
+import { loginStatus } from '../redux/store';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
+  const isLoggedIn = useSelector(loginStatus);
 
   const handleLogoClick = () => {
     navigate(`/main`);

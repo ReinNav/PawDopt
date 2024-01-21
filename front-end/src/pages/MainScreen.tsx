@@ -2,7 +2,7 @@ import DogListing from '../components/DogListing';
 import { useDogs } from '../domain/hooks';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { RootState } from '../redux/store';
+import { loginStatus } from '../redux/store';
 import '../stylesheets/main.css';
 import SadPuppy from '../components/SadPuppy';
 
@@ -10,7 +10,7 @@ function MainScreen() {
   const { dogs, state } = useDogs();
   const navigate = useNavigate()
 
-  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
+  const isLoggedIn = useSelector(loginStatus);
 
   const handleAddClick = () => {
     navigate(`/dogs/add`);

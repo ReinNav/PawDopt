@@ -11,6 +11,10 @@ public class AuthService {
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * Default admin user
+     * Auto create with @PostConstruct after initialization
+     */
     @PostConstruct
     public void init() {
         if (userRepository.findByUsername("admin") == null) {
