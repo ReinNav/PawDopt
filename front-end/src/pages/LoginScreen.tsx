@@ -19,8 +19,11 @@ const LoginComponent: React.FC = () => {
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
     });
+
+    setUsername('');
+    setPassword('');
     
-    if (response.ok) {
+    if (response.status == 200) {
       setAuthValid(true);
       dispatch(loginSuccess());
       navigate("/main")
