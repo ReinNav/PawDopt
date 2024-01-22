@@ -25,7 +25,7 @@ const LoginComponent: React.FC = () => {
     
     if (response.status == 200) {
       setAuthValid(true);
-      dispatch(loginSuccess());
+      dispatch(loginSuccess(true));
       navigate("/main")
     } else {
       setAuthValid(false);

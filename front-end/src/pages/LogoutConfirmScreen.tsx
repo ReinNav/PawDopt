@@ -12,7 +12,7 @@ const LogoutConfirmScreen: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleLogout = async () => {
-    dispatch(logout());
+    dispatch(logout(false));
     navigate('/main')
   };
 
